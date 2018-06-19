@@ -1,0 +1,4056 @@
+---
+swagger: "2.0"
+info:
+  description: "Chibi power face recognition system"
+  version: "1"
+  title: "Face"
+host: "face.api.ink"
+basePath: "/v1"
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /login:
+    post:
+      tags:
+      - "User"
+      summary: "User Login"
+      description: "System User Login"
+      operationId: "login_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /index/pie:
+    get:
+      tags:
+      - "Home"
+      summary: "Index Pie Chart"
+      description: "Index Pie Chart"
+      operationId: "index_pie_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_1"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.home_controller"
+  /index/by:
+    get:
+      tags:
+      - "Home"
+      summary: "Index Pie Chart"
+      description: "Index Pie Chart"
+      operationId: "index_by_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_2"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.home_controller"
+  /index/log:
+    get:
+      tags:
+      - "Home"
+      summary: "Index Chart Log"
+      description: "Index Chart Log"
+      operationId: "index_log_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_3"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.home_controller"
+  /attendance/list:
+    get:
+      tags:
+      - "Attendance"
+      summary: "attendance list"
+      description: "attendance list"
+      operationId: "attendance_list_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Each page shows the number"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "which page"
+        required: false
+        type: "string"
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "starttime"
+        in: "query"
+        description: "start time"
+        required: false
+        type: "string"
+      - name: "endtime"
+        in: "query"
+        description: "end time"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_4"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.attendance_controller"
+  /attendance/info/{id}:
+    get:
+      tags:
+      - "Attendance"
+      summary: "attendance info"
+      description: "attendance info"
+      operationId: "attendance_info_id_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "login user id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_5"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.attendance_controller"
+  /attendance/export:
+    get:
+      tags:
+      - "Attendance"
+      summary: "attendance export"
+      description: "attendance export"
+      operationId: "attendance_export_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "starttime"
+        in: "query"
+        description: "start time"
+        required: false
+        type: "string"
+      - name: "endtime"
+        in: "query"
+        description: "end time"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_4"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.attendance_controller"
+  /attendance/day/list:
+    get:
+      tags:
+      - "Attendance"
+      summary: "attendance day list"
+      description: "attendance day list"
+      operationId: "attendance_day_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "query"
+        description: "the username for user choose"
+        required: false
+        type: "string"
+      - name: "starttime"
+        in: "query"
+        description: "start time"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_4"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.attendance_controller"
+  /attendance/day/export:
+    get:
+      tags:
+      - "Attendance"
+      summary: "attendance export"
+      description: "attendance export"
+      operationId: "attendance_day_export_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "starttime"
+        in: "query"
+        description: "start time"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "query"
+        description: "the username choosed"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_4"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.attendance_controller"
+  /attendance/day/info/{id}:
+    get:
+      tags:
+      - "Attendance"
+      summary: "attendance export"
+      description: "attendance export"
+      operationId: "attendance_day_info_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "login user id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_4"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.attendance_controller"
+  /visitors/list:
+    get:
+      tags:
+      - "Visitors"
+      summary: "Visitors list"
+      description: "Visitors list"
+      operationId: "visitors_list_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Each page shows the number"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "which page"
+        required: false
+        type: "string"
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "starttime"
+        in: "query"
+        description: "start time"
+        required: false
+        type: "string"
+      - name: "endtime"
+        in: "query"
+        description: "end time"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_6"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.visitors_controller"
+  /visitors/info/{id}:
+    get:
+      tags:
+      - "Visitors"
+      summary: "Visitors info"
+      description: "Visitors info"
+      operationId: "visitors_info_id_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Each page shows the number"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_7"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.visitors_controller"
+  /visitors/export:
+    get:
+      tags:
+      - "Visitors"
+      summary: "Visitors Export"
+      description: "Visitors Export"
+      operationId: "visitors_export_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "starttime"
+        in: "query"
+        description: "start time"
+        required: false
+        type: "string"
+      - name: "endtime"
+        in: "query"
+        description: "end time"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_6"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.visitors_controller"
+  /system/user/list:
+    get:
+      tags:
+      - "System"
+      summary: "System User list"
+      description: "System User list"
+      operationId: "system_user_list_get"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Each page shows the number"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "which page"
+        required: false
+        type: "string"
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "query"
+        description: "account status"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_8"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/user/export:
+    get:
+      tags:
+      - "System"
+      summary: "System User export"
+      description: "System User export"
+      operationId: "system_user_export_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "query"
+        description: "account status"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_8"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/user:
+    post:
+      tags:
+      - "System"
+      summary: "System User Add"
+      description: "System User Add"
+      operationId: "system_user_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_2"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    put:
+      tags:
+      - "System"
+      summary: "System User Edit"
+      description: "System User Edit"
+      operationId: "system_user_put"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_1"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    delete:
+      tags:
+      - "System"
+      summary: "System User Del"
+      description: "System User Del"
+      operationId: "system_user_delete"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_3"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/user/query/{id}:
+    get:
+      tags:
+      - "System"
+      summary: "System User get"
+      description: "System User get"
+      operationId: "system_user_query_id_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "user id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_9"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/employee/list:
+    get:
+      tags:
+      - "System"
+      summary: "System employee list"
+      description: "System employee list"
+      operationId: "system_employee_list_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Each page shows the number"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "which page"
+        required: false
+        type: "string"
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "query"
+        description: "account status"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_10"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/employee/export:
+    get:
+      tags:
+      - "System"
+      summary: "System employee export"
+      description: "System employee export"
+      operationId: "system_employee_export_get"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        description: "page"
+        required: true
+        type: "string"
+      - name: "size"
+        in: "query"
+        description: "size"
+        required: true
+        type: "string"
+      - name: "team"
+        in: "query"
+        description: "team"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "query"
+        description: "account status"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_10"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/employee:
+    post:
+      tags:
+      - "System"
+      summary: "System employee Add"
+      description: "System employee Add"
+      operationId: "system_employee_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_5"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    put:
+      tags:
+      - "System"
+      summary: "System employee Edit"
+      description: "System employee Edit"
+      operationId: "system_employee_put"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_4"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    delete:
+      tags:
+      - "System"
+      summary: "System employee Del"
+      description: "System employee Del"
+      operationId: "system_employee_delete"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_6"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/employee/query/{id}:
+    get:
+      tags:
+      - "System"
+      summary: "System employee get"
+      description: "System employee get"
+      operationId: "system_employee_query_id_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "user id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_11"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/tment/list:
+    get:
+      tags:
+      - "System"
+      summary: "System tment list"
+      description: "System tment list"
+      operationId: "system_tment_list_get"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Each page shows the number"
+        required: true
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "which page"
+        required: true
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "query"
+        description: "account status"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_12"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/tment/export:
+    get:
+      tags:
+      - "System"
+      summary: "System tment export"
+      description: "System tment export"
+      operationId: "system_tment_export_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "query"
+        description: "account status"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_12"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/tment:
+    post:
+      tags:
+      - "System"
+      summary: "System Tment Add"
+      description: "System Tment Add"
+      operationId: "system_tment_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_8"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    put:
+      tags:
+      - "System"
+      summary: "System Tment Put"
+      description: "System Tment Put"
+      operationId: "system_tment_put"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_7"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    delete:
+      tags:
+      - "System"
+      summary: "System Tment Del"
+      description: "System Tment Del"
+      operationId: "system_tment_delete"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_9"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/tment/query/{id}:
+    get:
+      tags:
+      - "System"
+      summary: "System tment get"
+      description: "System tment get"
+      operationId: "system_tment_query_id_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "user id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_13"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/access:
+    get:
+      tags:
+      - "System"
+      summary: "System tment get"
+      description: "System tment get"
+      operationId: "system_access_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Each page shows the number"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "which page"
+        required: false
+        type: "string"
+      - name: "keyword"
+        in: "query"
+        description: "keyword"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "query"
+        description: "access status"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_14"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    post:
+      tags:
+      - "System"
+      summary: "System Tment Add"
+      description: "System Tment Add"
+      operationId: "system_access_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_11"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    put:
+      tags:
+      - "System"
+      summary: "System Tment Edit"
+      description: "System Tment Edit"
+      operationId: "system_access_put"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_10"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    delete:
+      tags:
+      - "System"
+      summary: "System Tment Del"
+      description: "System Tment Del"
+      operationId: "system_access_delete"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_12"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/access/query/{id}:
+    get:
+      tags:
+      - "System"
+      summary: "System access get"
+      description: "System access get"
+      operationId: "system_access_query_id_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "user id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_15"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/userpic:
+    post:
+      tags:
+      - "System"
+      summary: "System userpic upfile"
+      description: "System userpic up"
+      operationId: "system_userpic_up"
+      consumes:
+      - "multipart/form-data"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "files"
+        in: "formData"
+        description: "the file of name"
+        required: true
+        type: "file"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/attendance:
+    get:
+      tags:
+      - "System"
+      summary: "System attendance set"
+      description: "System attendance set"
+      operationId: "system_attendance_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_16"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+    post:
+      tags:
+      - "System"
+      summary: "System attendance set"
+      description: "System attendance set"
+      operationId: "system_attendance_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_13"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /system/password:
+    post:
+      tags:
+      - "System"
+      summary: "System User Edit Password"
+      description: "System User Edit Password"
+      operationId: "system_password_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_14"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /access/level:
+    get:
+      tags:
+      - "System"
+      summary: "Access Query Info"
+      description: "Access Query Info"
+      operationId: "access_level_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "access level"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_17"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.system_controller"
+  /label/team:
+    get:
+      tags:
+      - "Label"
+      summary: "System department"
+      description: "System department"
+      operationId: "label_team_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_18"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.label_controller"
+  /label/purpose:
+    get:
+      tags:
+      - "Label"
+      summary: "System purpose"
+      description: "System purpose"
+      operationId: "label_purpose_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_18"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.label_controller"
+  /tcp/camera:
+    get:
+      tags:
+      - "Camera"
+      summary: "TCP Server Data"
+      description: "TCP Server Data"
+      operationId: "tcp_camera_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "status"
+        in: "query"
+        description: "Demand Processing Status"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_19"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.camera_controller"
+    post:
+      tags:
+      - "Camera"
+      summary: "TCP Server Add Data"
+      description: "TCP Server Add Data"
+      operationId: "tcp_camera_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_16"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.camera_controller"
+    put:
+      tags:
+      - "Camera"
+      summary: "TCP Server Edit Data"
+      description: "TCP Server Edit Data"
+      operationId: "tcp_camera_put"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_15"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.camera_controller"
+  /monitor:
+    get:
+      tags:
+      - "Monitor"
+      summary: "Get access to people information"
+      description: "Get access to people information"
+      operationId: "monitor_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "status"
+        in: "query"
+        description: "Demand Processing Status"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_20"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.monitor_controller"
+    post:
+      tags:
+      - "Monitor"
+      summary: "Update visitor log"
+      description: "Update visitor log"
+      operationId: "monitor_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_17"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.monitor_controller"
+  /monitor/polling:
+    get:
+      tags:
+      - "Monitor"
+      summary: "polling log"
+      description: "polling log"
+      operationId: "monitor_polling_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200_21"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.monitor_controller"
+  /monitor/open:
+    post:
+      tags:
+      - "Monitor"
+      summary: "Open"
+      description: "Open"
+      operationId: "monitor_open_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "data"
+        required: true
+        schema:
+          $ref: "#/definitions/body_18"
+      responses:
+        200:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        500:
+          description: "return status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+      x-swagger-router-controller: "swagger_server.controllers.monitor_controller"
+definitions:
+  Login:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+        description: "username"
+      passwd:
+        type: "string"
+        description: "password"
+  Success:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+  AttendanceList:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_4_result"
+  AttendanceListResult:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "list ID"
+      name:
+        type: "string"
+        description: "Employee name"
+      team:
+        type: "string"
+        description: "Own team"
+      normal:
+        type: "integer"
+        description: "Normal days"
+      late:
+        type: "integer"
+        description: "late num"
+      leave:
+        type: "integer"
+        description: "Leave early"
+      absence:
+        type: "integer"
+        description: "Absence early"
+  VisitorsList:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_6_result"
+  VisitorsListResult:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "Guest ID"
+      name:
+        type: "string"
+        description: "Guest name"
+      interviewed:
+        type: "string"
+        description: "Interviewed"
+      team:
+        type: "string"
+        description: "Interviewed team"
+      total:
+        type: "integer"
+        description: "Visitors total"
+      status:
+        type: "string"
+        description: "Visitor status"
+      visiting:
+        type: "string"
+        description: "Visiting time"
+      leave:
+        type: "string"
+        description: "leave time"
+  SystemUserList:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_8_result"
+  SystemUserListResult:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "ID"
+      username:
+        type: "string"
+        description: "Account name"
+      mail:
+        type: "string"
+        description: "system login account"
+      status:
+        type: "integer"
+        description: "account status"
+      posttime:
+        type: "string"
+        description: "Create time"
+  SystemEmployeeList:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_10_result"
+  SystemEmployeeListResult:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "ID"
+      name:
+        type: "string"
+        description: "Account name"
+      sex:
+        type: "string"
+        description: "employeel sex"
+      team:
+        type: "string"
+        description: "employeel team"
+      status:
+        type: "integer"
+        description: "employeel status"
+      posttime:
+        type: "string"
+        description: "Create time"
+  SystemTmentList:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_12_result"
+  SystemTmentListResult:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "ID"
+      name:
+        type: "string"
+        description: "tment name"
+      total:
+        type: "string"
+        description: "tment num"
+      status:
+        type: "integer"
+        description: "tment status"
+      posttime:
+        type: "string"
+        description: "Create time"
+  SystemAttendanceSet:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      morning:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_16_morning"
+      afternoon:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_16_morning"
+  SystemTmentListMorning:
+    type: "object"
+    properties:
+      startwork:
+        type: "string"
+        description: "start work time"
+      endwork:
+        type: "string"
+        description: "end work time"
+      startwork_late:
+        type: "string"
+        description: "end work time"
+      endwork_late:
+        type: "string"
+        description: "end work time"
+  AttendanceInfo:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      userinfo:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_5_userinfo"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_5_result"
+  AttendanceInfoList:
+    type: "object"
+    properties:
+      day:
+        type: "integer"
+        description: "day"
+      status:
+        type: "integer"
+        description: "Attendance status on the day"
+  AttendanceInfoUser:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+        description: "username"
+      normal:
+        type: "integer"
+        description: "normal"
+      late:
+        type: "integer"
+        description: "late"
+      retreat:
+        type: "integer"
+        description: "Leave early"
+  VisitorsListInfo:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      basic:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_7_basic"
+      topic:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_7_topic"
+  VisitorsListBasic:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+        description: "username"
+      visiting:
+        type: "string"
+        description: "Visiting time"
+      leave:
+        type: "string"
+        description: "leave time"
+      purpose:
+        type: "string"
+        description: "Visiting purpose"
+      phone:
+        type: "string"
+        description: "Contact information"
+      interviewed:
+        type: "string"
+        description: "Interviewed"
+      team:
+        type: "string"
+        description: "Their department"
+      vip:
+        type: "string"
+        description: "Yes No vip"
+      remarks:
+        type: "string"
+        description: "Remarks"
+  VisitorsListTopic:
+    type: "object"
+    properties:
+      url:
+        type: "string"
+        description: "topic url"
+  LabelTeam:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_18_result"
+  LabelTeams:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "label team id"
+      name:
+        type: "integer"
+        description: "label team name"
+  SystemUserAdd:
+    type: "object"
+    properties:
+      team:
+        type: "integer"
+        description: "team id"
+      mail:
+        type: "string"
+        description: "login mail"
+      username:
+        type: "string"
+        description: "username"
+      status:
+        type: "integer"
+        description: "user status"
+      passwd:
+        type: "string"
+        description: "login password"
+  SystemUserDel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+  SystemUserEdit:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      team:
+        type: "integer"
+        description: "team id"
+      mail:
+        type: "string"
+        description: "login mail"
+      username:
+        type: "string"
+        description: "username"
+      status:
+        type: "integer"
+        description: "user status"
+      passwd:
+        type: "string"
+        description: "login password"
+  SystemUserQueryInfo:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_9_result"
+  SystemUserQueryInfos:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      team:
+        type: "integer"
+        description: "team id"
+      mail:
+        type: "string"
+        description: "login mail"
+      passwd:
+        type: "string"
+        description: "login password"
+  SystemEmployeeAdd:
+    type: "object"
+    properties:
+      topic:
+        type: "string"
+        description: "employee topic url"
+      username:
+        type: "string"
+        description: "employee username"
+      team:
+        type: "string"
+        description: "team"
+      sex:
+        type: "integer"
+        description: "employee sex"
+      status:
+        type: "integer"
+        description: "employee status"
+      remarks:
+        type: "string"
+        description: "employee remarks"
+  SystemEmployeeEdit:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      topic:
+        type: "string"
+        description: "employee topic url"
+      username:
+        type: "string"
+        description: "employee username"
+      team:
+        type: "string"
+        description: "team"
+      sex:
+        type: "integer"
+        description: "employee sex"
+      status:
+        type: "integer"
+        description: "employee status"
+      remarks:
+        type: "string"
+        description: "employee remarks"
+  SystemEmployeeDel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+  SystemEmployeeQuery:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_11_result"
+  SystemEmployeeQuerys:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      topic:
+        type: "string"
+        description: "employee topic url"
+      username:
+        type: "string"
+        description: "employee username"
+      team:
+        type: "string"
+        description: "team"
+      sex:
+        type: "integer"
+        description: "employee sex"
+      remarks:
+        type: "string"
+        description: "employee remarks"
+  SystemTmentAdd:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "tment add"
+      status:
+        type: "integer"
+        description: "tment status"
+      remarks:
+        type: "string"
+        description: "tment remarks"
+  SystemTmentPut:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      name:
+        type: "string"
+        description: "tment add"
+      status:
+        type: "integer"
+        description: "tment status"
+      remarks:
+        type: "string"
+        description: "tment remarks"
+  SystemTmentDel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+  SystemTmentQuery:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_13_result"
+  SystemTmentQuerys:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      name:
+        type: "string"
+        description: "tment add"
+      status:
+        type: "integer"
+        description: "tment status"
+      remarks:
+        type: "integer"
+        description: "tment remarks"
+  SystemAccess:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "List Total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_14_result"
+  SystemAccesss:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "string"
+        description: "access status"
+      level:
+        type: "string"
+        description: "access level"
+      type:
+        type: "string"
+        description: "access show"
+      child:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_14_child"
+      posttime:
+        type: "string"
+        description: "access add posttime"
+  SystemAccessAdd:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "integer"
+        description: "access status"
+      level:
+        type: "integer"
+        description: "access level"
+      type:
+        type: "integer"
+        description: "access type"
+      pid:
+        type: "integer"
+        description: "access pid"
+      router:
+        type: "string"
+        description: "access router"
+      desc:
+        type: "string"
+        description: "access esc"
+  SystemAccessEdit:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "integer"
+        description: "access status"
+      level:
+        type: "integer"
+        description: "access level"
+      type:
+        type: "integer"
+        description: "access type"
+      pid:
+        type: "integer"
+        description: "access pid"
+      router:
+        type: "string"
+        description: "access router"
+      desc:
+        type: "string"
+        description: "access esc"
+  SystemAccessDel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+  SystemAccessQuery:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_15_result"
+  SystemAccessQuerys:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "access id"
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "string"
+        description: "access status"
+      level:
+        type: "string"
+        description: "access level"
+      type:
+        type: "string"
+        description: "access show"
+      router:
+        type: "string"
+        description: "access router"
+      desc:
+        type: "string"
+        description: "access desc"
+  SystemAttendanceAdd:
+    type: "object"
+    properties:
+      morning:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_16_morning"
+      afternoon:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_16_morning"
+  SystemTmentListMornings:
+    type: "object"
+    properties:
+      startwork:
+        type: "string"
+        description: "start work time"
+      endwork:
+        type: "string"
+        description: "end work time"
+      startwork_late:
+        type: "string"
+        description: "end work time"
+      endwork_late:
+        type: "string"
+        description: "end work time"
+  TcpServerList:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      morning:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_19_morning"
+  TcpServerLists:
+    type: "object"
+    properties:
+      CamID:
+        type: "string"
+        description: "camid"
+      RecordID:
+        type: "string"
+        description: "RecordID"
+      TollgateID:
+        type: "string"
+        description: "TollgateID"
+      PassTime:
+        type: "string"
+        description: "PassTime"
+      PicNumber:
+        type: "string"
+        description: "PicNumber"
+      ImageType:
+        type: "string"
+        description: "ImageType"
+      ImageFormat:
+        type: "string"
+        description: "ImageFormat"
+      status:
+        type: "string"
+        description: "status"
+      picList:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_19_picList"
+  TcpServerAdd:
+    type: "object"
+    properties:
+      CamID:
+        type: "string"
+        description: "camid"
+      RecordID:
+        type: "string"
+        description: "RecordID"
+      TollgateID:
+        type: "string"
+        description: "TollgateID"
+      PassTime:
+        type: "string"
+        description: "PassTime"
+      PicNumber:
+        type: "string"
+        description: "PicNumber"
+      ImageType:
+        type: "string"
+        description: "ImageType"
+      ImageFormat:
+        type: "string"
+        description: "ImageFormat"
+      picList:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_19_picList"
+  TcpServerAddPic:
+    type: "object"
+    properties:
+      size:
+        type: "string"
+        description: "pic lenght"
+      pic:
+        type: "string"
+        description: "pic data"
+  TcpServerEdit:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "id"
+      status:
+        type: "string"
+        description: "status"
+  HomePieChart:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      day:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_1_day"
+      morning:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_1_day"
+      afternoon:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_1_day"
+  HomePieChartDay:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "Pie Chart Name"
+      val:
+        type: "string"
+        description: "Pie Chart val"
+  HomePass:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_2_result"
+  HomePasss:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "by user name"
+      team:
+        type: "string"
+        description: "by user team"
+      desc:
+        type: "string"
+        description: "by user desc"
+      posttime:
+        type: "string"
+        description: "by user time"
+  HomeLog:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_3_result"
+  HomeLogs:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "by user name"
+      val:
+        type: "string"
+        description: "by user team"
+  MonitorList:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_20_result"
+  MonitorLists:
+    type: "object"
+    properties:
+      image:
+        type: "string"
+        description: "image path"
+  MonitorUpdate:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "log id"
+      visitId:
+        type: "string"
+        description: "username"
+      username:
+        type: "string"
+        description: "username"
+      posttime:
+        type: "string"
+        description: "posttime"
+      purpose:
+        type: "integer"
+        description: "purpose"
+      total:
+        type: "string"
+        description: "Visitors"
+      phone:
+        type: "string"
+        description: "phone"
+      interviewed:
+        type: "string"
+        description: "interviewed"
+      team:
+        type: "integer"
+        description: "Respondent department"
+      pic:
+        type: "array"
+        items:
+          $ref: "#/definitions/monitor_pic"
+  MonitorPicList:
+    type: "object"
+    properties:
+      img:
+        type: "string"
+        description: "img path"
+  MonitorOpen:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+        description: "open status"
+  AccessListss:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "string"
+        description: "access status"
+      level:
+        type: "string"
+        description: "access level"
+      type:
+        type: "string"
+        description: "access type"
+      posttime:
+        type: "string"
+        description: "access add posttime"
+  AccessQueryAccessLevel:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_17_result"
+  AccessQueryAccessLevels:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "access id"
+      name:
+        type: "string"
+        description: "access name"
+  SystemUserPassword:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "user id"
+      old:
+        type: "string"
+        description: "old password"
+      new:
+        type: "string"
+        description: "new password"
+  MonitorPolling:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "id"
+      camid:
+        type: "string"
+        description: "id"
+      pic:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_21_pic"
+  MonitorPollings:
+    type: "object"
+    properties:
+      img:
+        type: "string"
+        description: "id"
+  body:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+        description: "username"
+      passwd:
+        type: "string"
+        description: "password"
+  inline_response_200:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+    example:
+      msg: "msg"
+      code: 0
+  inline_response_200_1_day:
+    properties:
+      name:
+        type: "string"
+        description: "Pie Chart Name"
+      val:
+        type: "string"
+        description: "Pie Chart val"
+    example:
+      val: "val"
+      name: "name"
+  inline_response_200_1:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      day:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_1_day"
+      morning:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_1_day"
+      afternoon:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_1_day"
+    example:
+      msg: "msg"
+      afternoon:
+      - val: "val"
+        name: "name"
+      - val: "val"
+        name: "name"
+      code: 0
+      day:
+      - val: "val"
+        name: "name"
+      - val: "val"
+        name: "name"
+      morning:
+      - val: "val"
+        name: "name"
+      - val: "val"
+        name: "name"
+  inline_response_200_2_result:
+    properties:
+      name:
+        type: "string"
+        description: "by user name"
+      team:
+        type: "string"
+        description: "by user team"
+      desc:
+        type: "string"
+        description: "by user desc"
+      posttime:
+        type: "string"
+        description: "by user time"
+    example:
+      posttime: "posttime"
+      name: "name"
+      team: "team"
+      desc: "desc"
+  inline_response_200_2:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_2_result"
+    example:
+      msg: "msg"
+      result:
+      - posttime: "posttime"
+        name: "name"
+        team: "team"
+        desc: "desc"
+      - posttime: "posttime"
+        name: "name"
+        team: "team"
+        desc: "desc"
+      code: 0
+  inline_response_200_3_result:
+    properties:
+      name:
+        type: "string"
+        description: "by user name"
+      val:
+        type: "string"
+        description: "by user team"
+    example:
+      val: "val"
+      name: "name"
+  inline_response_200_3:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_3_result"
+    example:
+      msg: "msg"
+      result:
+      - val: "val"
+        name: "name"
+      - val: "val"
+        name: "name"
+      code: 0
+  inline_response_200_4_result:
+    properties:
+      id:
+        type: "integer"
+        description: "list ID"
+      name:
+        type: "string"
+        description: "Employee name"
+      team:
+        type: "string"
+        description: "Own team"
+      normal:
+        type: "integer"
+        description: "Normal days"
+      late:
+        type: "integer"
+        description: "late num"
+      leave:
+        type: "integer"
+        description: "Leave early"
+      absence:
+        type: "integer"
+        description: "Absence early"
+    example:
+      normal: 5
+      late: 5
+      leave: 2
+      absence: 7
+      name: "name"
+      id: 1
+      team: "team"
+  inline_response_200_4:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_4_result"
+    example:
+      msg: "msg"
+      result:
+      - normal: 5
+        late: 5
+        leave: 2
+        absence: 7
+        name: "name"
+        id: 1
+        team: "team"
+      - normal: 5
+        late: 5
+        leave: 2
+        absence: 7
+        name: "name"
+        id: 1
+        team: "team"
+      total: 6
+      code: 0
+  inline_response_200_5_userinfo:
+    properties:
+      username:
+        type: "string"
+        description: "username"
+      normal:
+        type: "integer"
+        description: "normal"
+      late:
+        type: "integer"
+        description: "late"
+      retreat:
+        type: "integer"
+        description: "Leave early"
+    example:
+      retreat: 5
+      normal: 6
+      late: 1
+      username: "username"
+  inline_response_200_5_result:
+    properties:
+      day:
+        type: "integer"
+        description: "day"
+      status:
+        type: "integer"
+        description: "Attendance status on the day"
+    example:
+      day: 5
+      status: 2
+  inline_response_200_5:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      userinfo:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_5_userinfo"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_5_result"
+    example:
+      msg: "msg"
+      result:
+      - day: 5
+        status: 2
+      - day: 5
+        status: 2
+      code: 0
+      userinfo:
+      - retreat: 5
+        normal: 6
+        late: 1
+        username: "username"
+      - retreat: 5
+        normal: 6
+        late: 1
+        username: "username"
+  inline_response_200_6_result:
+    properties:
+      id:
+        type: "integer"
+        description: "Guest ID"
+      name:
+        type: "string"
+        description: "Guest name"
+      interviewed:
+        type: "string"
+        description: "Interviewed"
+      team:
+        type: "string"
+        description: "Interviewed team"
+      total:
+        type: "integer"
+        description: "Visitors total"
+      status:
+        type: "string"
+        description: "Visitor status"
+      visiting:
+        type: "string"
+        description: "Visiting time"
+      leave:
+        type: "string"
+        description: "leave time"
+    example:
+      total: 5
+      visiting: "visiting"
+      leave: "leave"
+      name: "name"
+      id: 1
+      team: "team"
+      interviewed: "interviewed"
+      status: "status"
+  inline_response_200_6:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_6_result"
+    example:
+      msg: "msg"
+      result:
+      - total: 5
+        visiting: "visiting"
+        leave: "leave"
+        name: "name"
+        id: 1
+        team: "team"
+        interviewed: "interviewed"
+        status: "status"
+      - total: 5
+        visiting: "visiting"
+        leave: "leave"
+        name: "name"
+        id: 1
+        team: "team"
+        interviewed: "interviewed"
+        status: "status"
+      total: 6
+      code: 0
+  inline_response_200_7_basic:
+    properties:
+      username:
+        type: "string"
+        description: "username"
+      visiting:
+        type: "string"
+        description: "Visiting time"
+      leave:
+        type: "string"
+        description: "leave time"
+      purpose:
+        type: "string"
+        description: "Visiting purpose"
+      phone:
+        type: "string"
+        description: "Contact information"
+      interviewed:
+        type: "string"
+        description: "Interviewed"
+      team:
+        type: "string"
+        description: "Their department"
+      vip:
+        type: "string"
+        description: "Yes No vip"
+      remarks:
+        type: "string"
+        description: "Remarks"
+    example:
+      visiting: "visiting"
+      purpose: "purpose"
+      phone: "phone"
+      leave: "leave"
+      team: "team"
+      vip: "vip"
+      interviewed: "interviewed"
+      remarks: "remarks"
+      username: "username"
+  inline_response_200_7_topic:
+    properties:
+      url:
+        type: "string"
+        description: "topic url"
+    example:
+      url: "url"
+  inline_response_200_7:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      basic:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_7_basic"
+      topic:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_7_topic"
+    example:
+      msg: "msg"
+      code: 0
+      topic:
+      - url: "url"
+      - url: "url"
+      basic:
+      - visiting: "visiting"
+        purpose: "purpose"
+        phone: "phone"
+        leave: "leave"
+        team: "team"
+        vip: "vip"
+        interviewed: "interviewed"
+        remarks: "remarks"
+        username: "username"
+      - visiting: "visiting"
+        purpose: "purpose"
+        phone: "phone"
+        leave: "leave"
+        team: "team"
+        vip: "vip"
+        interviewed: "interviewed"
+        remarks: "remarks"
+        username: "username"
+  inline_response_200_8_result:
+    properties:
+      id:
+        type: "integer"
+        description: "ID"
+      username:
+        type: "string"
+        description: "Account name"
+      mail:
+        type: "string"
+        description: "system login account"
+      status:
+        type: "integer"
+        description: "account status"
+      posttime:
+        type: "string"
+        description: "Create time"
+    example:
+      posttime: "posttime"
+      mail: "mail"
+      id: 1
+      username: "username"
+      status: 5
+  inline_response_200_8:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_8_result"
+    example:
+      msg: "msg"
+      result:
+      - posttime: "posttime"
+        mail: "mail"
+        id: 1
+        username: "username"
+        status: 5
+      - posttime: "posttime"
+        mail: "mail"
+        id: 1
+        username: "username"
+        status: 5
+      total: 6
+      code: 0
+  body_1:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      team:
+        type: "integer"
+        description: "team id"
+      mail:
+        type: "string"
+        description: "login mail"
+      username:
+        type: "string"
+        description: "username"
+      status:
+        type: "integer"
+        description: "user status"
+      passwd:
+        type: "string"
+        description: "login password"
+  body_2:
+    type: "object"
+    properties:
+      team:
+        type: "integer"
+        description: "team id"
+      mail:
+        type: "string"
+        description: "login mail"
+      username:
+        type: "string"
+        description: "username"
+      status:
+        type: "integer"
+        description: "user status"
+      passwd:
+        type: "string"
+        description: "login password"
+  body_3:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+  inline_response_200_9_result:
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      team:
+        type: "integer"
+        description: "team id"
+      mail:
+        type: "string"
+        description: "login mail"
+      passwd:
+        type: "string"
+        description: "login password"
+    example:
+      mail: "mail"
+      passwd: "passwd"
+      id: 6
+      team: 1
+  inline_response_200_9:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_9_result"
+    example:
+      msg: "msg"
+      result:
+      - mail: "mail"
+        passwd: "passwd"
+        id: 6
+        team: 1
+      - mail: "mail"
+        passwd: "passwd"
+        id: 6
+        team: 1
+      code: 0
+  inline_response_200_10_result:
+    properties:
+      id:
+        type: "integer"
+        description: "ID"
+      name:
+        type: "string"
+        description: "Account name"
+      sex:
+        type: "string"
+        description: "employeel sex"
+      team:
+        type: "string"
+        description: "employeel team"
+      status:
+        type: "integer"
+        description: "employeel status"
+      posttime:
+        type: "string"
+        description: "Create time"
+    example:
+      posttime: "posttime"
+      sex: "sex"
+      name: "name"
+      id: 1
+      team: "team"
+      status: 5
+  inline_response_200_10:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_10_result"
+    example:
+      msg: "msg"
+      result:
+      - posttime: "posttime"
+        sex: "sex"
+        name: "name"
+        id: 1
+        team: "team"
+        status: 5
+      - posttime: "posttime"
+        sex: "sex"
+        name: "name"
+        id: 1
+        team: "team"
+        status: 5
+      total: 6
+      code: 0
+  body_4:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      topic:
+        type: "string"
+        description: "employee topic url"
+      username:
+        type: "string"
+        description: "employee username"
+      team:
+        type: "string"
+        description: "team"
+      sex:
+        type: "integer"
+        description: "employee sex"
+      status:
+        type: "integer"
+        description: "employee status"
+      remarks:
+        type: "string"
+        description: "employee remarks"
+  body_5:
+    type: "object"
+    properties:
+      topic:
+        type: "string"
+        description: "employee topic url"
+      username:
+        type: "string"
+        description: "employee username"
+      team:
+        type: "string"
+        description: "team"
+      sex:
+        type: "integer"
+        description: "employee sex"
+      status:
+        type: "integer"
+        description: "employee status"
+      remarks:
+        type: "string"
+        description: "employee remarks"
+  body_6:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+  inline_response_200_11_result:
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      topic:
+        type: "string"
+        description: "employee topic url"
+      username:
+        type: "string"
+        description: "employee username"
+      team:
+        type: "string"
+        description: "team"
+      sex:
+        type: "integer"
+        description: "employee sex"
+      remarks:
+        type: "string"
+        description: "employee remarks"
+    example:
+      sex: 1
+      topic: "topic"
+      id: 6
+      team: "team"
+      remarks: "remarks"
+      username: "username"
+  inline_response_200_11:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_11_result"
+    example:
+      msg: "msg"
+      result:
+      - sex: 1
+        topic: "topic"
+        id: 6
+        team: "team"
+        remarks: "remarks"
+        username: "username"
+      - sex: 1
+        topic: "topic"
+        id: 6
+        team: "team"
+        remarks: "remarks"
+        username: "username"
+      code: 0
+  inline_response_200_12_result:
+    properties:
+      id:
+        type: "integer"
+        description: "ID"
+      name:
+        type: "string"
+        description: "tment name"
+      total:
+        type: "string"
+        description: "tment num"
+      status:
+        type: "integer"
+        description: "tment status"
+      posttime:
+        type: "string"
+        description: "Create time"
+    example:
+      posttime: "posttime"
+      total: "total"
+      name: "name"
+      id: 1
+      status: 5
+  inline_response_200_12:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_12_result"
+    example:
+      msg: "msg"
+      result:
+      - posttime: "posttime"
+        total: "total"
+        name: "name"
+        id: 1
+        status: 5
+      - posttime: "posttime"
+        total: "total"
+        name: "name"
+        id: 1
+        status: 5
+      total: 6
+      code: 0
+  body_7:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      name:
+        type: "string"
+        description: "tment add"
+      status:
+        type: "integer"
+        description: "tment status"
+      remarks:
+        type: "string"
+        description: "tment remarks"
+  body_8:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "tment add"
+      status:
+        type: "integer"
+        description: "tment status"
+      remarks:
+        type: "string"
+        description: "tment remarks"
+  body_9:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+  inline_response_200_13_result:
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      name:
+        type: "string"
+        description: "tment add"
+      status:
+        type: "integer"
+        description: "tment status"
+      remarks:
+        type: "integer"
+        description: "tment remarks"
+    example:
+      name: "name"
+      id: 6
+      remarks: 5
+      status: 1
+  inline_response_200_13:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_13_result"
+    example:
+      msg: "msg"
+      result:
+      - name: "name"
+        id: 6
+        remarks: 5
+        status: 1
+      - name: "name"
+        id: 6
+        remarks: 5
+        status: 1
+      code: 0
+  inline_response_200_14_child:
+    properties:
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "string"
+        description: "access status"
+      level:
+        type: "string"
+        description: "access level"
+      type:
+        type: "string"
+        description: "access type"
+      posttime:
+        type: "string"
+        description: "access add posttime"
+    example:
+      posttime: "posttime"
+      level: "level"
+      name: "name"
+      type: "type"
+      status: "status"
+  inline_response_200_14_result:
+    properties:
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "string"
+        description: "access status"
+      level:
+        type: "string"
+        description: "access level"
+      type:
+        type: "string"
+        description: "access show"
+      child:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_14_child"
+      posttime:
+        type: "string"
+        description: "access add posttime"
+    example:
+      posttime: "posttime"
+      level: "level"
+      name: "name"
+      type: "type"
+      status: "status"
+      child:
+      - posttime: "posttime"
+        level: "level"
+        name: "name"
+        type: "type"
+        status: "status"
+      - posttime: "posttime"
+        level: "level"
+        name: "name"
+        type: "type"
+        status: "status"
+  inline_response_200_14:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "List Total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_14_result"
+    example:
+      msg: "msg"
+      result:
+      - posttime: "posttime"
+        level: "level"
+        name: "name"
+        type: "type"
+        status: "status"
+        child:
+        - posttime: "posttime"
+          level: "level"
+          name: "name"
+          type: "type"
+          status: "status"
+        - posttime: "posttime"
+          level: "level"
+          name: "name"
+          type: "type"
+          status: "status"
+      - posttime: "posttime"
+        level: "level"
+        name: "name"
+        type: "type"
+        status: "status"
+        child:
+        - posttime: "posttime"
+          level: "level"
+          name: "name"
+          type: "type"
+          status: "status"
+        - posttime: "posttime"
+          level: "level"
+          name: "name"
+          type: "type"
+          status: "status"
+      total: 6
+      code: 0
+  body_10:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "integer"
+        description: "access status"
+      level:
+        type: "integer"
+        description: "access level"
+      type:
+        type: "integer"
+        description: "access type"
+      pid:
+        type: "integer"
+        description: "access pid"
+      router:
+        type: "string"
+        description: "access router"
+      desc:
+        type: "string"
+        description: "access esc"
+  body_11:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "integer"
+        description: "access status"
+      level:
+        type: "integer"
+        description: "access level"
+      type:
+        type: "integer"
+        description: "access type"
+      pid:
+        type: "integer"
+        description: "access pid"
+      router:
+        type: "string"
+        description: "access router"
+      desc:
+        type: "string"
+        description: "access esc"
+  body_12:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "user id"
+  inline_response_200_15_result:
+    properties:
+      id:
+        type: "string"
+        description: "access id"
+      name:
+        type: "string"
+        description: "access name"
+      status:
+        type: "string"
+        description: "access status"
+      level:
+        type: "string"
+        description: "access level"
+      type:
+        type: "string"
+        description: "access show"
+      router:
+        type: "string"
+        description: "access router"
+      desc:
+        type: "string"
+        description: "access desc"
+    example:
+      router: "router"
+      level: "level"
+      name: "name"
+      id: "id"
+      type: "type"
+      status: "status"
+      desc: "desc"
+  inline_response_200_15:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      total:
+        type: "integer"
+        description: "list total"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_15_result"
+    example:
+      msg: "msg"
+      result:
+      - router: "router"
+        level: "level"
+        name: "name"
+        id: "id"
+        type: "type"
+        status: "status"
+        desc: "desc"
+      - router: "router"
+        level: "level"
+        name: "name"
+        id: "id"
+        type: "type"
+        status: "status"
+        desc: "desc"
+      total: 6
+      code: 0
+  inline_response_200_16_morning:
+    properties:
+      startwork:
+        type: "string"
+        description: "start work time"
+      endwork:
+        type: "string"
+        description: "end work time"
+      startwork_late:
+        type: "string"
+        description: "end work time"
+      endwork_late:
+        type: "string"
+        description: "end work time"
+    example:
+      startwork: "startwork"
+      startwork_late: "startwork_late"
+      endwork_late: "endwork_late"
+      endwork: "endwork"
+  inline_response_200_16:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      morning:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_16_morning"
+      afternoon:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_16_morning"
+    example:
+      msg: "msg"
+      afternoon:
+      - startwork: "startwork"
+        startwork_late: "startwork_late"
+        endwork_late: "endwork_late"
+        endwork: "endwork"
+      - startwork: "startwork"
+        startwork_late: "startwork_late"
+        endwork_late: "endwork_late"
+        endwork: "endwork"
+      code: 0
+      morning:
+      - startwork: "startwork"
+        startwork_late: "startwork_late"
+        endwork_late: "endwork_late"
+        endwork: "endwork"
+      - startwork: "startwork"
+        startwork_late: "startwork_late"
+        endwork_late: "endwork_late"
+        endwork: "endwork"
+  body_13:
+    type: "object"
+    properties:
+      morning:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_16_morning"
+      afternoon:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_16_morning"
+  body_14:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "user id"
+      old:
+        type: "string"
+        description: "old password"
+      new:
+        type: "string"
+        description: "new password"
+  inline_response_200_17_result:
+    properties:
+      id:
+        type: "integer"
+        description: "access id"
+      name:
+        type: "string"
+        description: "access name"
+    example:
+      name: "name"
+      id: 6
+  inline_response_200_17:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_17_result"
+    example:
+      msg: "msg"
+      result:
+      - name: "name"
+        id: 6
+      - name: "name"
+        id: 6
+      code: 0
+  inline_response_200_18_result:
+    properties:
+      id:
+        type: "integer"
+        description: "label team id"
+      name:
+        type: "integer"
+        description: "label team name"
+    example:
+      name: 1
+      id: 6
+  inline_response_200_18:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_18_result"
+    example:
+      msg: "msg"
+      result:
+      - name: 1
+        id: 6
+      - name: 1
+        id: 6
+      code: 0
+  inline_response_200_19_picList:
+    properties:
+      size:
+        type: "string"
+        description: "pic lenght"
+      pic:
+        type: "string"
+        description: "pic data"
+    example:
+      size: "size"
+      pic: "pic"
+  inline_response_200_19_morning:
+    properties:
+      CamID:
+        type: "string"
+        description: "camid"
+      RecordID:
+        type: "string"
+        description: "RecordID"
+      TollgateID:
+        type: "string"
+        description: "TollgateID"
+      PassTime:
+        type: "string"
+        description: "PassTime"
+      PicNumber:
+        type: "string"
+        description: "PicNumber"
+      ImageType:
+        type: "string"
+        description: "ImageType"
+      ImageFormat:
+        type: "string"
+        description: "ImageFormat"
+      status:
+        type: "string"
+        description: "status"
+      picList:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_19_picList"
+    example:
+      TollgateID: "TollgateID"
+      picList:
+      - size: "size"
+        pic: "pic"
+      - size: "size"
+        pic: "pic"
+      CamID: "CamID"
+      PicNumber: "PicNumber"
+      PassTime: "PassTime"
+      RecordID: "RecordID"
+      ImageType: "ImageType"
+      ImageFormat: "ImageFormat"
+      status: "status"
+  inline_response_200_19:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      morning:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_19_morning"
+    example:
+      msg: "msg"
+      code: 0
+      morning:
+      - TollgateID: "TollgateID"
+        picList:
+        - size: "size"
+          pic: "pic"
+        - size: "size"
+          pic: "pic"
+        CamID: "CamID"
+        PicNumber: "PicNumber"
+        PassTime: "PassTime"
+        RecordID: "RecordID"
+        ImageType: "ImageType"
+        ImageFormat: "ImageFormat"
+        status: "status"
+      - TollgateID: "TollgateID"
+        picList:
+        - size: "size"
+          pic: "pic"
+        - size: "size"
+          pic: "pic"
+        CamID: "CamID"
+        PicNumber: "PicNumber"
+        PassTime: "PassTime"
+        RecordID: "RecordID"
+        ImageType: "ImageType"
+        ImageFormat: "ImageFormat"
+        status: "status"
+  body_15:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "id"
+      status:
+        type: "string"
+        description: "status"
+  body_16:
+    type: "object"
+    properties:
+      CamID:
+        type: "string"
+        description: "camid"
+      RecordID:
+        type: "string"
+        description: "RecordID"
+      TollgateID:
+        type: "string"
+        description: "TollgateID"
+      PassTime:
+        type: "string"
+        description: "PassTime"
+      PicNumber:
+        type: "string"
+        description: "PicNumber"
+      ImageType:
+        type: "string"
+        description: "ImageType"
+      ImageFormat:
+        type: "string"
+        description: "ImageFormat"
+      picList:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_19_picList"
+  inline_response_200_20_result:
+    properties:
+      image:
+        type: "string"
+        description: "image path"
+    example:
+      image: "image"
+  inline_response_200_20:
+    properties:
+      code:
+        type: "integer"
+        description: "system return code"
+      msg:
+        type: "string"
+        description: "system return news"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_20_result"
+    example:
+      msg: "msg"
+      result:
+      - image: "image"
+      - image: "image"
+      code: 0
+  monitor_pic:
+    properties:
+      img:
+        type: "string"
+        description: "img path"
+  body_17:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "log id"
+      visitId:
+        type: "string"
+        description: "username"
+      username:
+        type: "string"
+        description: "username"
+      posttime:
+        type: "string"
+        description: "posttime"
+      purpose:
+        type: "integer"
+        description: "purpose"
+      total:
+        type: "string"
+        description: "Visitors"
+      phone:
+        type: "string"
+        description: "phone"
+      interviewed:
+        type: "string"
+        description: "interviewed"
+      team:
+        type: "integer"
+        description: "Respondent department"
+      pic:
+        type: "array"
+        items:
+          $ref: "#/definitions/monitor_pic"
+  inline_response_200_21_pic:
+    properties:
+      img:
+        type: "string"
+        description: "id"
+    example:
+      img: "img"
+  inline_response_200_21:
+    properties:
+      id:
+        type: "string"
+        description: "id"
+      camid:
+        type: "string"
+        description: "id"
+      pic:
+        type: "array"
+        items:
+          $ref: "#/definitions/inline_response_200_21_pic"
+    example:
+      camid: "camid"
+      id: "id"
+      pic:
+      - img: "img"
+      - img: "img"
+  body_18:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+        description: "open status"
